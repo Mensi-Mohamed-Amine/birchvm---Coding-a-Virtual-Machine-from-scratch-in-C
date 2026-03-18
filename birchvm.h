@@ -58,14 +58,31 @@ struct s_cpu
 typedef struct s_cpu CPU;
 
 /*
-    mov ax,0x05 // 0x01 0x01
+    mov ax,0x05 // (0x01 OR 0x02)
+                // 0000 0011 = mov
+                // 0000 0000 = ax
+                // 0000 0101 = 0x05
 
 */
 
-typedef Opcode Program;
+enum e_opcode
+{
+    mov = 0x01,
+    nop = 0x02
+};
+typedef enum e_opcode Opcode;
+
+struct s_instruction
+{
+    Opcode o;
+    Args a[]; /* 0-2 bytes */
+};
+
+typedef struct s_instruction Instruction;
 
 typedef int8 Stack[-1];
 typedef Instruction Program;
+
 struct s_vm
 {
     CPU c;
