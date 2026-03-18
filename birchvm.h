@@ -21,3 +21,49 @@ typedef unsigned long long int int64;
 #define $8 (int64)
 #define $c (char *)
 #define $i (int)
+
+/*
+
+    16 bit
+        AX
+        Bx
+        CX
+        DX
+        SP
+        IP
+    64 KB memory
+    (Serial COM port)
+    (Floppy drive)
+
+*/
+
+typedef unsigned short int Reg;
+
+struct s_registers
+{
+    Reg ax;
+    Reg bx;
+    Reg cx;
+    Reg dx;
+    Reg sp;
+    Reg ip;
+};
+
+typedef struct s_registers Registers;
+struct s_cpu
+{
+    Registers r;
+};
+
+typedef struct s_cpu CPU;
+
+struct s_vm
+{
+    CPU c;
+    Stack s;
+    Program *p;
+};
+
+typedef struct s_vm VM;
+
+int main(int, char **);
