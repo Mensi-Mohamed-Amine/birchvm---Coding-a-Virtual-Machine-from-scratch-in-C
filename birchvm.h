@@ -57,6 +57,15 @@ struct s_cpu
 
 typedef struct s_cpu CPU;
 
+/*
+    mov ax,0x05 // 0x01 0x01
+
+*/
+
+typedef Opcode Program;
+
+typedef int8 Stack[-1];
+typedef Instruction Program;
 struct s_vm
 {
     CPU c;
