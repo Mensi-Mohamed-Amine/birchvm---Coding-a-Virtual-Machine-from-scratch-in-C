@@ -102,8 +102,10 @@ struct s_vm
 
 typedef struct s_vm VM;
 
+static Opcode opc;
+
 static IM instrmap[] = {
-    {Opcode.mov, 0x03},
-    {Opcode.nop, 0x01}};
+    {opc.mov, 0x03},
+    {opc.nop, 0x01}};
 
 int main(int, char **);
