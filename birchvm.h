@@ -65,6 +65,14 @@ typedef struct s_cpu CPU;
 
 */
 
+struct s_instrmap
+{
+    Opcode o;
+    int *size;
+};
+
+typedef struct s_instrmap IM;
+
 enum e_opcode
 {
     mov = 0x01,
@@ -91,5 +99,9 @@ struct s_vm
 };
 
 typedef struct s_vm VM;
+
+static IM *instrmap = {
+    {Opcode.mov, 0x03},
+    {Opcode.nop, 0x01}};
 
 int main(int, char **);
