@@ -65,6 +65,13 @@ typedef struct s_cpu CPU;
 
 */
 
+enum e_opcode
+{
+    mov = 0x01,
+    nop = 0x02
+};
+typedef enum e_opcode Opcode;
+
 struct s_instrmap
 {
     Opcode o;
@@ -73,12 +80,7 @@ struct s_instrmap
 
 typedef struct s_instrmap IM;
 
-enum e_opcode
-{
-    mov = 0x01,
-    nop = 0x02
-};
-typedef enum e_opcode Opcode;
+typedef int8 Args;
 
 struct s_instruction
 {
@@ -88,7 +90,7 @@ struct s_instruction
 
 typedef struct s_instruction Instruction;
 
-typedef int8 Stack[-1];
+typedef int8 Stack[((unsigned int)(-1))];
 typedef Instruction Program;
 
 struct s_vm
@@ -100,7 +102,7 @@ struct s_vm
 
 typedef struct s_vm VM;
 
-static IM *instrmap = {
+static IM instrmap[] = {
     {Opcode.mov, 0x03},
     {Opcode.nop, 0x01}};
 
